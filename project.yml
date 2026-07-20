@@ -8,20 +8,20 @@ targets:
     type: application
     platform: iOS
     sources:
-      - path: .
-        excludes:
-          - project.yml
-          - README.md
-          - "*.xcodeproj"
-          - Info.plist
-          - ".git/**"
+      - path: MessageBlocker
+      - path: Shared
     info:
-      path: Info.plist
+      path: MessageBlocker/Info.plist
       properties:
         CFBundleDisplayName: MessageBlocker
         UILaunchScreen: {}
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
+    entitlements:
+      path: MessageBlocker/MessageBlocker.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.soraycengiz.MessageBlocker
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.soraycengiz.MessageBlocker
@@ -33,3 +33,34 @@ targets:
         SWIFT_VERSION: "5.0"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    dependencies:
+      - target: MessageFilterExtension
+        embed: true
+  MessageFilterExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: MessageFilterExtension
+      - path: Shared
+    info:
+      path: MessageFilterExtension/Info.plist
+      properties:
+        CFBundleDisplayName: MessageFilterExtension
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.identitylookup.message-filter
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).MessageFilterExtension
+    entitlements:
+      path: MessageFilterExtension/MessageFilterExtension.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.soraycengiz.MessageBlocker
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.soraycengiz.MessageBlocker.MessageFilterExtension
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: TTD73R4725
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.0"
+        SKIP_INSTALL: "YES"
