@@ -64,3 +64,13 @@ targets:
         TARGETED_DEVICE_FAMILY: "1"
         SWIFT_VERSION: "5.0"
         SKIP_INSTALL: "YES"
+schemes:
+  MessageBlocker:
+    build:
+      targets:
+        MessageBlocker: all
+        MessageFilterExtension: [build]
+    run:
+      config: Debug
+    archive:
+      config: Release
