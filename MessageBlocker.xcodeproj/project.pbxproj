@@ -154,11 +154,11 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					6EEB9425345CAC413DD60EFB = {
-						DevelopmentTeam = TTD73R4725;
+						DevelopmentTeam = CQZBRVT8JN;
 						ProvisioningStyle = Automatic;
 					};
 					FACC94C84A052908B0FFE6BE = {
-						DevelopmentTeam = TTD73R4725;
+						DevelopmentTeam = CQZBRVT8JN;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -297,7 +297,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TTD73R4725;
+				DEVELOPMENT_TEAM = CQZBRVT8JN;
 				INFOPLIST_FILE = MessageBlocker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -317,7 +317,7 @@
 				CODE_SIGN_ENTITLEMENTS = MessageFilterExtension/MessageFilterExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TTD73R4725;
+				DEVELOPMENT_TEAM = CQZBRVT8JN;
 				INFOPLIST_FILE = MessageFilterExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -339,7 +339,7 @@
 				CODE_SIGN_ENTITLEMENTS = MessageFilterExtension/MessageFilterExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TTD73R4725;
+				DEVELOPMENT_TEAM = CQZBRVT8JN;
 				INFOPLIST_FILE = MessageFilterExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -420,7 +420,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TTD73R4725;
+				DEVELOPMENT_TEAM = CQZBRVT8JN;
 				INFOPLIST_FILE = MessageBlocker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
