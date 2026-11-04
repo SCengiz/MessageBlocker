@@ -11,12 +11,22 @@
 		464FBA24031CFBEDE4F4840B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C126F736084870EDCA9EAF /* ContentView.swift */; };
 		4D6F657F08F7B47FAE6B92E1 /* MessageFilterExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E8E7D7303486023C949923DF /* MessageFilterExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5164A33D0A701CF0F85C403E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90303627F0CFAF918457150B /* Assets.xcassets */; };
+		6E978F1B103CE43C7AF885F7 /* CallDirectoryExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6EC60C996574A27AD37D466F /* CallDirectoryExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8B89331F3B5D1CEC5C72E3C4 /* KeywordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B00C7C5E67A9BF5F12501F /* KeywordStore.swift */; };
+		8DBAD1702CF141DE9A4401CB /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1681AE1AB1ADB05F6C673D /* CallDirectoryHandler.swift */; };
 		935AD7FAC57C375FD121AD28 /* KeywordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B00C7C5E67A9BF5F12501F /* KeywordStore.swift */; };
 		9598CEB46B9DE53E0E111047 /* MessageFilterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45917A83978D64750322CE3D /* MessageFilterExtension.swift */; };
 		9A3FCF726874975CF3E385A3 /* KeywordStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B00C7C5E67A9BF5F12501F /* KeywordStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		26F6DFA7C7E7D63A4272A437 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E17AEEECC8C0702871872491 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3661088A3C923BBC21467A4F;
+			remoteInfo = CallDirectoryExtension;
+		};
 		F3044AF2488113206234BD1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E17AEEECC8C0702871872491 /* Project object */;
@@ -34,6 +44,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				4D6F657F08F7B47FAE6B92E1 /* MessageFilterExtension.appex in Embed Foundation Extensions */,
+				6E978F1B103CE43C7AF885F7 /* CallDirectoryExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,16 +53,20 @@
 
 /* Begin PBXFileReference section */
 		03C126F736084870EDCA9EAF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0D1681AE1AB1ADB05F6C673D /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
 		1A001AD72F59EE6EE6672EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		247977144B1D8D8DB634BCE6 /* MessageFilterExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MessageFilterExtension.entitlements; sourceTree = "<group>"; };
+		33D9C233F881AB72FF7A8AB5 /* CallDirectoryExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CallDirectoryExtension.entitlements; sourceTree = "<group>"; };
 		40A5881D5E29C8A8E04F8063 /* MessageBlocker.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MessageBlocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45917A83978D64750322CE3D /* MessageFilterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFilterExtension.swift; sourceTree = "<group>"; };
 		4CDF3A55E0C2D03949BB91AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6EC60C996574A27AD37D466F /* CallDirectoryExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = CallDirectoryExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		90303627F0CFAF918457150B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		945B508E123755AFD13CA824 /* MessageBlocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MessageBlocker.entitlements; sourceTree = "<group>"; };
 		94B00C7C5E67A9BF5F12501F /* KeywordStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordStore.swift; sourceTree = "<group>"; };
 		E8E7D7303486023C949923DF /* MessageFilterExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = MessageFilterExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBDEAEF103B98A48DEEF0608 /* MessageBlockerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBlockerApp.swift; sourceTree = "<group>"; };
+		EC92499F14C199B8997E1401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -63,9 +78,20 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		2D5E6D27DA40B6659BCD729E /* CallDirectoryExtension */ = {
+			isa = PBXGroup;
+			children = (
+				33D9C233F881AB72FF7A8AB5 /* CallDirectoryExtension.entitlements */,
+				0D1681AE1AB1ADB05F6C673D /* CallDirectoryHandler.swift */,
+				EC92499F14C199B8997E1401 /* Info.plist */,
+			);
+			path = CallDirectoryExtension;
+			sourceTree = "<group>";
+		};
 		329CF1104F7F14A7EB92DFB2 = {
 			isa = PBXGroup;
 			children = (
+				2D5E6D27DA40B6659BCD729E /* CallDirectoryExtension */,
 				4510DA02C88C2D9C434DD9B4 /* MessageBlocker */,
 				CA6764F58F858074A1BD05EB /* MessageFilterExtension */,
 				0EA3A1A9118CF00448D7D8D5 /* Shared */,
@@ -88,6 +114,7 @@
 		85CE76ACB311E38AD782DCF1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				6EC60C996574A27AD37D466F /* CallDirectoryExtension.appex */,
 				40A5881D5E29C8A8E04F8063 /* MessageBlocker.app */,
 				E8E7D7303486023C949923DF /* MessageFilterExtension.appex */,
 			);
@@ -107,6 +134,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3661088A3C923BBC21467A4F /* CallDirectoryExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDE427E768613F095AABA245 /* Build configuration list for PBXNativeTarget "CallDirectoryExtension" */;
+			buildPhases = (
+				E66F0147A974DE782BBF9172 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CallDirectoryExtension;
+			packageProductDependencies = (
+			);
+			productName = CallDirectoryExtension;
+			productReference = 6EC60C996574A27AD37D466F /* CallDirectoryExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		6EEB9425345CAC413DD60EFB /* MessageBlocker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7EDB5AB3CA31B8045DA62D9 /* Build configuration list for PBXNativeTarget "MessageBlocker" */;
@@ -119,6 +163,7 @@
 			);
 			dependencies = (
 				0EDD0CC736FC9DF3C04B400B /* PBXTargetDependency */,
+				44EF4B359F4D1E3800BA070F /* PBXTargetDependency */,
 			);
 			name = MessageBlocker;
 			packageProductDependencies = (
@@ -153,6 +198,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					3661088A3C923BBC21467A4F = {
+						DevelopmentTeam = CQZBRVT8JN;
+						ProvisioningStyle = Automatic;
+					};
 					6EEB9425345CAC413DD60EFB = {
 						DevelopmentTeam = CQZBRVT8JN;
 						ProvisioningStyle = Automatic;
@@ -178,6 +227,7 @@
 			projectRoot = "";
 			targets = (
 				6EEB9425345CAC413DD60EFB /* MessageBlocker */,
+				3661088A3C923BBC21467A4F /* CallDirectoryExtension */,
 				FACC94C84A052908B0FFE6BE /* MessageFilterExtension */,
 			);
 		};
@@ -214,6 +264,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E66F0147A974DE782BBF9172 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DBAD1702CF141DE9A4401CB /* CallDirectoryHandler.swift in Sources */,
+				8B89331F3B5D1CEC5C72E3C4 /* KeywordStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -222,9 +281,36 @@
 			target = FACC94C84A052908B0FFE6BE /* MessageFilterExtension */;
 			targetProxy = F3044AF2488113206234BD1D /* PBXContainerItemProxy */;
 		};
+		44EF4B359F4D1E3800BA070F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3661088A3C923BBC21467A4F /* CallDirectoryExtension */;
+			targetProxy = 26F6DFA7C7E7D63A4272A437 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		048348739CCA04442248A4B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CallDirectoryExtension/CallDirectoryExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CQZBRVT8JN;
+				INFOPLIST_FILE = CallDirectoryExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soraycengiz.MessageBlocker.CallDirectoryExtension;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		059131D80E7F236A7F3BC52C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -285,6 +371,28 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0EB18D2707B217EDCA7B45D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CallDirectoryExtension/CallDirectoryExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CQZBRVT8JN;
+				INFOPLIST_FILE = CallDirectoryExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soraycengiz.MessageBlocker.CallDirectoryExtension;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -451,6 +559,15 @@
 			buildConfigurations = (
 				7C6FD76DD1B940E94EAFED2E /* Debug */,
 				66CBA54624314BAD7C7F8695 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EDE427E768613F095AABA245 /* Build configuration list for PBXNativeTarget "CallDirectoryExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EB18D2707B217EDCA7B45D6 /* Debug */,
+				048348739CCA04442248A4B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

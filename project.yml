@@ -36,6 +36,36 @@ targets:
     dependencies:
       - target: MessageFilterExtension
         embed: true
+      - target: CallDirectoryExtension
+        embed: true
+  CallDirectoryExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: CallDirectoryExtension
+      - path: Shared
+    info:
+      path: CallDirectoryExtension/Info.plist
+      properties:
+        CFBundleDisplayName: CallDirectoryExtension
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.CallKit.call-directory
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).CallDirectoryHandler
+    entitlements:
+      path: CallDirectoryExtension/CallDirectoryExtension.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.soraycengiz.MessageBlocker
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.soraycengiz.MessageBlocker.CallDirectoryExtension
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: CQZBRVT8JN
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.0"
+        SKIP_INSTALL: "YES"
   MessageFilterExtension:
     type: app-extension
     platform: iOS
@@ -70,6 +100,7 @@ schemes:
       targets:
         MessageBlocker: all
         MessageFilterExtension: [build]
+        CallDirectoryExtension: [build]
     run:
       config: Debug
     archive:
