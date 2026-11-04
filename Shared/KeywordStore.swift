@@ -52,27 +52,6 @@ enum KeywordStore {
         return digits.hasPrefix("90850") || digits.hasPrefix("0850") || digits.hasPrefix("850")
     }
 
-    // MARK: - 0850 çağrı engelleme
-
-    private static let block0850CallsKey = "block0850Calls"
-
-    /// +90 850 XXX XX XX aralığı: engelleme listesine eklenecek numaralar.
-    /// CallKit joker/önek kabul etmediği için aralığın tamamı tek tek eklenir.
-    static let calls0850Start: Int64 = 908_500_000_000
-    static let calls0850End: Int64 = 908_509_999_999
-
-    static func isBlocking0850Calls() -> Bool {
-        if let shared = sharedDefaults?.object(forKey: block0850CallsKey) as? Bool {
-            return shared
-        }
-        return UserDefaults.standard.bool(forKey: block0850CallsKey)
-    }
-
-    static func setBlocking0850Calls(_ enabled: Bool) {
-        sharedDefaults?.set(enabled, forKey: block0850CallsKey)
-        UserDefaults.standard.set(enabled, forKey: block0850CallsKey)
-    }
-
     // MARK: - Eşleştirme
 
     /// Mesajın engellenmesi gerekip gerekmediğini söyler.

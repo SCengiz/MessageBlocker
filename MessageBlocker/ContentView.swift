@@ -1,12 +1,9 @@
 import SwiftUI
-import CallKit
 
 struct ContentView: View {
     @State private var keywords: [String] = KeywordStore.load()
     @State private var newKeyword: String = ""
     @State private var block0850: Bool = KeywordStore.isBlocking0850()
-    @State private var block0850Calls: Bool = KeywordStore.isBlocking0850Calls()
-    @State private var callStatus: String?
     @FocusState private var inputFocused: Bool
 
     private var trimmedInput: String {
@@ -40,7 +37,6 @@ struct ContentView: View {
             }
             .scrollDismissesKeyboard(.interactively)
         }
-        .onAppear(perform: checkCallExtensionStatus)
     }
 
     // MARK: - Başlık
@@ -126,105 +122,9 @@ struct ContentView: View {
                 KeywordStore.setBlocking0850(newValue)
             }
 
-            Divider()
-
-            Toggle(isOn: $block0850Calls) {
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("0850 aramalarını engelle")
-                        .font(.body.weight(.medium))
-                    Text("Aramalar sessizce reddedilir")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .tint(Color.accentBlue)
-            .onChange(of: block0850Calls) { _, newValue in
-                KeywordStore.setBlocking0850Calls(newValue)
-                reloadCallDirectory()
-            }
-
-            if let callStatus {
-                Text(callStatus)
-                    .font(.caption)
-                    .foregroundStyle(callStatus.hasPrefix("✓") ? .green : .orange)
-            }
         }
         .padding(16)
         .cardStyle()
-    }
-
-    private static let callExtensionID = "com.soraycengiz.MessageBlocker.CallDirectoryExtension"
-
-    /// iOS uzantıyı tanıyor mu? Sorunun uzantının hiç görünmemesinden mi,
-    /// yoksa Ayarlar'dan açılmamış olmasından mı kaynaklandığını ayırt eder.
-    private func checkCallExtensionStatus() {
-        CXCallDirectoryManager.sharedInstance.getEnabledStatusForExtension(withIdentifier: Self.callExtensionID) { status, error in
-            let ns = error as NSError?
-            print("MBDIAG status=\(status.rawValue) error=\(ns?.domain ?? "-")/\(ns?.code ?? 0)")
-            DispatchQueue.main.async {
-                if let error {
-                    callStatus = "Durum okunamadı: \(error.localizedDescription)"
-                    return
-                }
-                switch status {
-                case .enabled:
-                    callStatus = "✓ Ayarlar'da açık"
-                case .disabled:
-                    callStatus = "Ayarlar > Uygulamalar > Telefon > Arama Engelleme'den aç"
-                case .unknown:
-                    callStatus = "iOS uzantıyı henüz görmüyor — telefonu yeniden başlat"
-                @unknown default:
-                    callStatus = nil
-                }
-            }
-        }
-    }
-
-    private func reloadCallDirectory() {
-        callStatus = "Liste hazırlanıyor…"
-        let id = Self.callExtensionID
-        CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: id) { error in
-            DispatchQueue.main.async {
-                if let error {
-                    callStatus = Self.describe(error)
-                } else {
-                    callStatus = block0850Calls ? "✓ Arama engelleme açık" : "✓ Arama engelleme kapalı"
-                }
-            }
-        }
-    }
-
-    /// CallKit hatalarını anlaşılır Türkçeye çevirir; sorunun nerede olduğunu
-    /// ayırt edebilmek için ham kodu da gösterir.
-    private static func describe(_ error: Error) -> String {
-        let ns = error as NSError
-        guard ns.domain == CXErrorCodeCallDirectoryManagerError.errorDomain,
-              let code = CXErrorCodeCallDirectoryManagerError.Code(rawValue: ns.code) else {
-            return "Olmadı (kod \(ns.code)): \(error.localizedDescription)"
-        }
-
-        let explanation: String
-        switch code {
-        case .noExtensionFound:
-            explanation = "Uzantı bulunamadı"
-        case .loadingInterrupted:
-            explanation = "Yükleme yarıda kesildi"
-        case .entriesOutOfOrder:
-            explanation = "Numaralar sırasız"
-        case .duplicateEntries:
-            explanation = "Yinelenen numara"
-        case .maximumEntriesExceeded:
-            explanation = "Numara sınırı aşıldı — 10 milyon fazla geldi"
-        case .extensionDisabled:
-            explanation = "Ayarlar > Uygulamalar > Telefon > Arama Engelleme'den açman gerekiyor"
-        case .currentlyLoading:
-            explanation = "Şu an yükleniyor, birazdan tekrar dene"
-        case .unexpectedIncrementalRemoval:
-            explanation = "Liste sıfırlanmalı"
-        @unknown default:
-            explanation = error.localizedDescription
-        }
-        return "Olmadı (kod \(ns.code)): \(explanation)"
     }
 
     // MARK: - Kelime ekleme
