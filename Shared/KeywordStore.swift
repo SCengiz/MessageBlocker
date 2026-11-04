@@ -5,16 +5,64 @@ enum KeywordStore {
     private static let key = "blockedKeywords"
     private static let defaultKeywords = ["mt2", "metin2", "server"]
 
-    private static var defaults: UserDefaults {
-        UserDefaults(suiteName: appGroupID) ?? .standard
+    private static var sharedDefaults: UserDefaults? {
+        UserDefaults(suiteName: appGroupID)
     }
 
+    /// Kurallar hem App Group deposuna hem de uygulamanın kendi deposuna yazılır.
+    /// Ücretsiz geliştirici hesaplarında App Group yetkisi her zaman çalışmadığı
+    /// için, yerel kopya kuralların kaybolmasını önleyen yedek görevi görür.
     static func load() -> [String] {
-        defaults.stringArray(forKey: key) ?? defaultKeywords
+        if let shared = sharedDefaults?.stringArray(forKey: key), !shared.isEmpty {
+            return shared
+        }
+        if let local = UserDefaults.standard.stringArray(forKey: key), !local.isEmpty {
+            // App Group okunamadıysa yerel kopyayı geri yazmayı dene
+            sharedDefaults?.set(local, forKey: key)
+            return local
+        }
+        return defaultKeywords
     }
 
     static func save(_ keywords: [String]) {
-        defaults.set(keywords, forKey: key)
+        sharedDefaults?.set(keywords, forKey: key)
+        UserDefaults.standard.set(keywords, forKey: key)
+    }
+
+    // MARK: - 0850 numara engelleme
+
+    private static let block0850Key = "block0850Senders"
+
+    static func isBlocking0850() -> Bool {
+        if let shared = sharedDefaults?.object(forKey: block0850Key) as? Bool {
+            return shared
+        }
+        return UserDefaults.standard.bool(forKey: block0850Key)
+    }
+
+    static func setBlocking0850(_ enabled: Bool) {
+        sharedDefaults?.set(enabled, forKey: block0850Key)
+        UserDefaults.standard.set(enabled, forKey: block0850Key)
+    }
+
+    /// Gönderen numarası 0850 ile başlıyor mu? Numara +90 850..., 0850...
+    /// veya 850... biçimlerinde gelebildiği için hepsi kontrol edilir.
+    static func isSender0850(_ sender: String) -> Bool {
+        let digits = sender.filter(\.isNumber)
+        return digits.hasPrefix("90850") || digits.hasPrefix("0850") || digits.hasPrefix("850")
+    }
+
+    // MARK: - Eşleştirme
+
+    /// Mesajın engellenmesi gerekip gerekmediğini söyler.
+    static func shouldBlock(sender: String?, body: String?) -> Bool {
+        if isBlocking0850(), let sender, isSender0850(sender) {
+            return true
+        }
+        if let body, matches(body) {
+            return true
+        }
+        return false
     }
 
     static func matches(_ messageBody: String) -> Bool {
